@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Up &amp; Down the River</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Up &amp; Down the River</h1>
+    <button id="newGameBtn" class="btn btn-ghost" hidden>New game</button>
+  </header>
+
+  <!-- ===== Setup screen ===== -->
+  <main id="setupView" class="view">
+    <section class="card">
+      <h2>1. Top of the river</h2>
+      <p class="hint">The most cards dealt in a hand. You play up to it, play it three times, then come back down.</p>
+      <div id="maxCardsPicker" class="segmented" role="radiogroup" aria-label="Maximum cards"></div>
+      <p class="sequence" id="sequencePreview"></p>
+    </section>
+
+    <section class="card">
+      <h2>2. Players</h2>
+      <p class="hint">Start with yourself as Player 1 (the score keeper), then go around the table in seating order. A random player is picked to deal first, and the deal moves one seat each hand.</p>
+      <ol id="playerList" class="player-list"></ol>
+      <button id="addPlayerBtn" class="btn btn-ghost" type="button">+ Add player</button>
+      <p id="setupWarning" class="warning" hidden></p>
+    </section>
+
+    <button id="startBtn" class="btn btn-primary btn-big" type="button">Start game</button>
+  </main>
+
+  <!-- ===== Game screen ===== -->
+  <main id="gameView" class="view" hidden>
+    <section class="status card" id="statusBar" aria-live="polite"></section>
+
+    <div class="table-wrap">
+      <table id="scoreTable" class="score-table"></table>
+    </div>
+
+    <p class="legend">
+      <span><b class="tag tag-bid">B</b> bid, entered at the start of the round</span>
+      <span><b class="tag tag-tricks">T</b> tricks taken, entered at the end</span>
+      <span>Large number = round points · small number = running total</span>
+    </p>
+
+    <!-- New-game confirmation (built in so it works everywhere) -->
+    <div id="confirmBox" class="card confirm" hidden>
+      <p>Start a new game? The current scores will be cleared.</p>
+      <div class="row">
+        <button id="confirmYes" class="btn btn-danger" type="button">Yes, new game</button>
+        <button id="confirmNo" class="btn btn-ghost" type="button">Cancel</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
